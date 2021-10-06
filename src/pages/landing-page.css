@@ -1,0 +1,27 @@
+
+
+.landing-page-left {
+	
+	height: 100vh;
+	padding: 1em;
+
+	display: flex;
+	flex-direction: column;
+
+	align-self: center;
+	justify-content: center;
+
+}
+
+.landing-page-right {
+
+	height: 100vh;
+	padding: 1em;
+
+	display: flex;
+	flex-direction: column;
+
+	align-self: center;
+	justify-content: center;
+	gap: 1em;
+}

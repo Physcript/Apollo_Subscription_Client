@@ -1,11 +1,13 @@
-.App {
+/*.App {
   text-align: center;
+}*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+body {
+ font-family: 'Poppins', sans-serif;
+ color: #707070;
+ letter-spacing: 1px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -36,3 +38,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+
