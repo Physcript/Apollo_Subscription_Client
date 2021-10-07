@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 // pages
 import LandingPage from './pages/LandingPage'
+import Home from './pages/Home'
 
 import { Container } from 'semantic-ui-react'
 
@@ -13,6 +14,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path = '/' component = {LandingPage}> <LandingPage /> </Route>
+        <Route exact path = '/home' component = { Home }> <Home /> </Route>
       </Switch>
     </Router>
   )
