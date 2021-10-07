@@ -13,9 +13,9 @@ function LandingPage ()  {
 
 		<div>
 			<Container>
+
 				<Grid>
 					<Grid.Row>
-					
 							<Grid.Column computer = { 8 } only = 'computer' >
 								<div className = 'landing-page-left'>
 									<h1>WELCOME</h1>
@@ -37,8 +37,11 @@ function LandingPage ()  {
 							</Grid.Column>
 				
 					</Grid.Row>
+					<Grid.Row>
+					</Grid.Row>
 				</Grid>
 			</Container>
+			
 		</div>
 
 	)

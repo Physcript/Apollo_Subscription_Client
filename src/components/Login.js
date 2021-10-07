@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory,Link } from 'react-router-dom'
 
 import { Container, Grid, Button, Header, Icon, Form, Label, Loader,Message } from 'semantic-ui-react'
 
@@ -94,8 +94,8 @@ const Login = () => {
 					onChange = { onChange }
 				/>
 				</Form.Field>
-				<label>Forgot password</label>
-				<label>Register here</label>
+				<label><Link to = '/forgotpassword'>Forgot password</Link></label>
+				<label><Link to = '/register'>Register here</Link></label>
 				<Form.Field>
 					<Button onClick = { loginHandler } primary style = {{ width: '50%'}}>Login</Button>
 				</Form.Field>

@@ -40,4 +40,23 @@ body {
 }
 
 
+.display-center {
+  width:100%;
+  height:90%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.flex-gap {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.ui.prompt {
+  
+}
+
 
