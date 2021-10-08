@@ -12,7 +12,7 @@ import './register.css'
 
 const RegisterPage = () => {
 	return (
-		<div className = 'register' style = {{ background: `url(${myImage})`}}>
+		<div className = 'register' style = {{ background: `url(${myImage})` , backgroundSize: 'cover' }}>
 			<Container>
 				<Grid>
 					<Grid.Row style = {{ height: '100vh' }}>

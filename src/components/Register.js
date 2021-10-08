@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_USER_MUTATION } from '../graphql/mutation/userMutation'
 
 
-import { Container, Grid, Button, Header, Icon, Form, Label, Loader,Message } from 'semantic-ui-react'
+import { Container, Grid, Button, Header, Icon, Form, Label, Loader,Message,Input } from 'semantic-ui-react'
 
 const Register = () => {
 
@@ -78,7 +78,7 @@ const Register = () => {
 					): '' }
 
 					<label>Firsname</label>
-					<Form.Input 
+					<Input 
 						style = {{ width: '300px' }}
 						placeholder = 'John'
 						name = 'firstName'
@@ -88,7 +88,7 @@ const Register = () => {
 						fluid
 					/>
 					<label>Lastname</label>
-					<Form.Input 
+					<Input 
 						style = {{ width: '300px' }}
 						placeholder = 'Santos'
 						name = 'lastName'
@@ -98,7 +98,7 @@ const Register = () => {
 						fluid
 					/>
 					<label>Email</label>
-					<Form.Input 
+					<Input 
 						style = {{ width: '300px' }}
 						placeholder = 'john.santos@yahoo.com'
 						name = 'email'
@@ -108,7 +108,7 @@ const Register = () => {
 						fluid
 					/>
 					<label>Password</label>
-					<Form.Input 
+					<Input 
 						style = {{ width: '300px' }}
 						placeholder = '******'
 						type = 'password'
@@ -119,7 +119,7 @@ const Register = () => {
 						fluid
 					/>
 					<label>Confirm Password</label>
-					<Form.Input 
+					<Input 
 						style = {{ width: '300px' }}
 						placeholder = '******'
 						type = 'password'
