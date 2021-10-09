@@ -52,11 +52,11 @@ const ForgotPage = () =>  {
 	},[])
 
 	return (
-		<div>
+		<div style = {{ background: `url(${myBackground})` ,  backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center bottom'}}>
 			<Container>
 				<Icon name = 'arrow left' style = {{ padding: '50px 50px 0px 0px' }}/><Link to = '/'>Back</Link>
 			</Container>
-			<div className = 'display-center-v2 flex-gap' style = {{ background: `url(${myBackground})` , backgroundSize: 'cover' }} >
+			<div className = 'display-center-v2 flex-gap' >
 				
 
 				{ loading ? <Loader active inline = 'centered' /> : '' }
