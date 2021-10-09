@@ -52,9 +52,11 @@ const ForgotPage = () =>  {
 	},[])
 
 	return (
-		<div style = {{ background: `url(${myBackground})` ,  backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center bottom'}}>
+		<div style = {{ background: `url(${myBackground})` ,  backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom'}}>
 			<Container>
-				<Icon name = 'arrow left' style = {{ padding: '50px 50px 0px 0px' }}/><Link to = '/'>Back</Link>
+				<div className = 'drop'>
+				<Icon name = 'arrow left' /><Link to = '/'>Back</Link>
+				</div>
 			</Container>
 			<div className = 'display-center-v2 flex-gap' >
 				

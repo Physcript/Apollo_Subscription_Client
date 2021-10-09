@@ -15,7 +15,7 @@
 
 .landing-page-right {
 
-	height: 100vh;
+	height: 100%;
 	padding: 1em;
 
 	display: flex;
@@ -23,5 +23,6 @@
 
 	align-self: center;
 	justify-content: center;
+	
 	gap: 1em;
 }

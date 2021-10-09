@@ -24,7 +24,7 @@ const RegisterPage = () => {
 						</Grid.Column>
 						<Grid.Column computer = { 10 } only = 'computer'>
 							<div className = 'display-center'>
-								<Image src = "https://res.cloudinary.com/dnnq8kne2/image/upload/v1633601034/System/Work_06_fyprhs.png"/>
+								<Image src = "https://res.cloudinary.com/dnnq8kne2/image/upload/v1633775230/System/bird-02_gxlars.png"/>
 							</div>
 						</Grid.Column>
 					</Grid.Row>
