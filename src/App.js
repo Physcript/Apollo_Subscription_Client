@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import RegisterPage from './pages/RegisterPage'
 import ForgotPage from './pages/ForgotPage'
 import ChangePage from './pages/ChangePage'
+import ProtectedRoute from './components/ProtectedRoute'
 
 import { Container } from 'semantic-ui-react'
 
@@ -17,10 +18,11 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path = '/' component = {LandingPage}> <LandingPage /> </Route>
-        <Route exact path = '/home' component = { Home }> <Home /> </Route>
         <Route exact path = '/register' component = { RegisterPage }> <RegisterPage /> </Route>
         <Route exact path = '/forgotpassword' component = { ForgotPage }> <ForgotPage /> </Route>
         <Route exact path = '/forgotpassword/u/:forgottoken' component = { ChangePage }> <ChangePage /> </Route>
+
+        <ProtectedRoute exact path = '/home' component = { Home } />  
       </Switch>
     </Router> 
   )

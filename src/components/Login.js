@@ -1,5 +1,6 @@
 import { useEffect,useState } from 'react'
 import { useHistory,Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import { Container, Grid, Button, Header, Icon, Form, Label, Loader,Message } from 'semantic-ui-react'
 
@@ -15,11 +16,12 @@ const Login = () => {
 	const [ loginSyntax, setLoginSyntax ] = useState({})
 	const [ login, { data: loginData, loading: loginLoading, error: loginError } ] = useMutation(LOGIN_USER_MUTATION, {
 		onError(e) {
-			setLoginSyntax(e.graphQLErrors[0].extensions.error)
+			// setLoginSyntax(e.graphQLErrors[0].extensions.error)
+			console.log(e)
 		},
 		onCompleted: e => {
 			setLoginSyntax({})
-			localStorage.setItem('token',e.loginUser )
+			Cookies.set('token',e.loginUser,{ sameSite: 'strict' })
 			history.push('/home')
 		}
 	})
