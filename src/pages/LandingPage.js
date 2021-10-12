@@ -1,3 +1,11 @@
+import {useEffect,useState} from 'react'
+import Cookies from 'js-cookie'
+import {useHistory} from 'react-router-dom'
+
+
+import { useQuery } from '@apollo/client'
+import { AUTHENTICATE_USER_TOKEN_QUERY } from '../graphql/query/userQuery'
+
 
 import { Container, Grid, Button, Header, Icon, Form, Label,Image } from 'semantic-ui-react'
 
@@ -9,6 +17,36 @@ import 'semantic-ui-css/semantic.min.css';
 import './landing-page.css'
 
 function LandingPage ()  {
+
+
+	const history = useHistory()
+
+ 	const [ auth,setAuth ] = useState(false)
+ 	const [ user,setUser ] = useState({})
+
+  	const { data,loading,error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
+    	variables: {
+      	token: Cookies.get('token')
+    },
+    onCompleted: val => {
+    	setUser(val.authLogin)
+
+
+	    history.push({
+	      	pathname: '/home',
+	      	state: {
+	      		auth: true,
+	      		user: val.authLogin
+	      	}
+	    })
+    }
+  })
+
+  useEffect(() => {
+
+  },[])
+
+
 	return (
 
 		<div className = 'landing-page-left' >

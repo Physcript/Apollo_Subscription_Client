@@ -6,8 +6,17 @@ import { gql } from '@apollo/client'
 
 export const AUTHENTICATE_USER_TOKEN_QUERY =  gql`
 	
-	query {
-		authLogin
+	query authLogin( $token: String ) {
+		authLogin( token: $token ) {
+
+			_id
+			firstName
+			lastName
+			email
+			verified
+			createdAt
+
+			}
 	}
 
 `

@@ -1,31 +1,27 @@
 
+import Cookies from 'js-cookie'
+
 import { useEffect,useState } from 'react'
-import { Route,Redirect } from 'react-router-dom'
+import { Route,Redirect,useLocation  } from 'react-router-dom'
 
 import { useQuery } from '@apollo/client'
 import { AUTHENTICATE_USER_TOKEN_QUERY } from '../graphql/query/userQuery'
 
 
-const ProtectedRoute = ({component: Component, ...rest }) => {
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+	const location = useLocation();
 
-	const [ auth,setAuth ] = useState(false)
-
-	const { data,loading,error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY)
-
-	// query
-
-	useEffect( () => {
-
-	},[])
-
+	
 	return(
-		<Route { ...rest } render = { (props) => {
+		<Route { ...rest }  render = { (props) => {
 
-			if(auth){
-				return <Component />
-			}else{
+			if(location.state){	
+				if(location.state.auth) return <Component user = { location.state.user } />
+			 	
+			}else {
 				return <Redirect to = {{ pathname: '/', state: { from: props.location } }}  />
 			}
+			
 
 		}}/>
 	)

@@ -11,9 +11,16 @@ import ProtectedRoute from './components/ProtectedRoute'
 
 import { Container } from 'semantic-ui-react'
 
+
+import {useEffect,useState} from 'react'
+
+
+
 import './App.css'
 
-const App = () => {
+  const App = () => {
+
+
   return (
     <Router>
       <Switch>

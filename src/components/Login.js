@@ -22,7 +22,9 @@ const Login = () => {
 		onCompleted: e => {
 			setLoginSyntax({})
 			Cookies.set('token',e.loginUser,{ sameSite: 'strict' })
-			history.push('/home')
+			history.push({
+				pathname: '/home'
+			})
 		}
 	})
 
