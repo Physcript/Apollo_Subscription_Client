@@ -40,6 +40,16 @@ body {
 }
 
 
+.display-middle {
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+}
+
+
 .display-center {
   width:100%;
   height:90%;
@@ -55,8 +65,20 @@ body {
   gap:10px;
 }
 
+.flex-gap-3 {
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
 .ui.prompt {
   
+}
+
+.ui .grid .row .column .display-center-fixed {
+
+  
+
 }
 
 .display-center-fixed {
@@ -113,4 +135,10 @@ body {
   flex-direction:column;
   justify-content:center;
   align-self:center;
+}
+
+
+
+.t_b {
+
 }
