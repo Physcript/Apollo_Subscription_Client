@@ -39,3 +39,9 @@ export const FORGOT_PASSWORD_FINAL_MUTATION = gql`
 		changePassword(password: $password confirmPassword: $confirmPassword token: $token) 
 	}
 `
+
+export const UPLODATE_IMAGE_MUTATION = gql`
+	mutation uploadImage( $image: Upload ){
+		uploadImage( image: $image )
+	}
+`

@@ -1,14 +1,44 @@
 
-
+import { UPLODATE_IMAGE_MUTATION } from '../graphql/mutation/userMutation'
+import { useMutation } from '@apollo/client'
 
 import { useState,useEffect } from 'react'
-import { Container,Grid,Image,Modal,Segment,Icon,Input } from 'semantic-ui-react'
+import { Container,Grid,Image,Modal,Segment,Icon,Input,Button,Header, } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 
 const HomeProfile = ({user}) => {
 
+	// modal
+	const [open, setOpen] = useState(false)
+
+	// mutation
+	const [uploadImage, { data:u_data,loading:u_loading,error:u_error }] = useMutation(UPLODATE_IMAGE_MUTATION,{
+		onError(val) {
+			console.log('val.e ',val.graphQLErrors[0])
+			console.log('val.only',val)
+		}
+	})
+
+	// users
 	const [person,setPerson] = useState(user)
+
+	// misc 
+	const [profileImage,setProfileImage] = useState({})
+
+	// handlers
+	const fileHandler = (e) => {
+		e.preventDefault()
+		uploadImage({
+			variables: {
+				image: e.target.files[0]
+			}
+		})
+	}
+
+	useEffect(()=> {
+		u_data ? console.log(u_data) : console.log('')
+	},[u_data])
 
 	return (
 		<Grid >
@@ -21,7 +51,7 @@ const HomeProfile = ({user}) => {
 					</div>
 
 					<div className = 'flex-gap'>
-						<a href = '/home'><label>Update Profile</label></a>
+						<label onClick = { () => setOpen(true) }>Update Profile</label>
 						<a href = '/home'><label>Message</label></a>
 						<a href = '/home'><label>Friend</label></a>
 						<a href = '/home'><label>Notification</label></a>
@@ -50,6 +80,48 @@ const HomeProfile = ({user}) => {
 					</div>
 				</Grid.Column>
 			</Grid.Row>
+
+
+			<Modal
+		      onClose={() => setOpen(false)}
+		      onOpen={() => setOpen(true)}
+		      open={open}
+		    >
+		      <Modal.Header>Update Profile</Modal.Header>
+		      <Modal.Content image>
+		      	<div>
+		        	<Image size='medium' src='https://react.semantic-ui.com/images/avatar/large/rachel.png' wrapped />
+		        	<Input 
+		        		type = 'file' 
+		        		fluid 
+		        		accept= "image/*" 
+		        		onChange = { fileHandler }
+		        	/>
+		        </div>
+		        <Modal.Description>
+		          <Header>Default Profile Image</Header>
+		          <p>
+		            We've found the following gravatar image associated with your e-mail
+		            address.
+		          </p>
+		          <p>Is it okay to use this photo?</p>
+		        </Modal.Description>
+		      </Modal.Content>
+		      <Modal.Actions>
+		        <Button color='black' onClick={() => setOpen(false)}>
+		          Nope
+		        </Button>
+		        <Button
+		          content="Yep, that's me"
+		          labelPosition='right'
+		          icon='checkmark'
+		          onClick={() => setOpen(false)}
+		          positive
+		        />
+		      </Modal.Actions>
+		    </Modal>
+
+
 		</Grid>
 	)
 }
