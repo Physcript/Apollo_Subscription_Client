@@ -42,6 +42,21 @@ export const FORGOT_PASSWORD_FINAL_MUTATION = gql`
 
 export const UPLODATE_IMAGE_MUTATION = gql`
 	mutation uploadImage( $image: Upload ){
-		uploadImage( image: $image )
+		uploadImage( image: $image ){
+			public_id
+			url
+		}
+	}
+`
+
+export const UPLOAD_IMAGE_DELETE_MUTATION = gql`
+	mutation deleteImage( $publicId: String ){
+		deleteImage( publicId: $publicId )
+	}
+`
+
+export const UPDATE_USER_PROFFILE_MUTATION = gql`
+	mutation updateUser( $firstName: String $lastName: String $image: String){
+		updateUser( firstName: $firstName lastName: $lastName image: $image )
 	}
 `

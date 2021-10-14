@@ -26,7 +26,7 @@ function LandingPage ()  {
 
   	const { data,loading,error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
     	variables: {
-      	token: Cookies.get('token')
+    	  	token: Cookies.get('token')
     },
     onCompleted: val => {
     	setUser(val.authLogin)
