@@ -23,4 +23,19 @@ export const AUTHENTICATE_USER_TOKEN_QUERY =  gql`
 
 `
 
+export const GET_USER_BY_PROFILE_ID_QUERY = gql`
+	query viewUser($profileId: String){
+		viewUser(profileId: $profileId) {
+			_id
+			firstName
+			lastName
+			image
+			email
+			profileId
+			verified
+			createdAt
+		}
+	}
+`
+
 

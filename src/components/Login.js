@@ -23,7 +23,8 @@ const Login = () => {
 			setLoginSyntax({})
 			Cookies.set('token',e.loginUser,{ sameSite: 'strict' })
 			history.push({
-				pathname: '/home'
+				pathname: '/home',
+				state: { auth: true }
 			})
 		}
 	})

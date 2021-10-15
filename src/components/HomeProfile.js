@@ -15,7 +15,7 @@ import { useMutation } from '@apollo/client'
 
 import { useState,useEffect } from 'react'
 import { Container,Grid,Image,Modal,Segment,Icon,Input,Button,Header,Message, Loader,Dimmer,Form } from 'semantic-ui-react'
-import { withRouter,useHistory } from 'react-router-dom'
+import { withRouter,useHistory,Link } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
 
 const HomeProfile = ({user}) => {
@@ -148,7 +148,11 @@ const HomeProfile = ({user}) => {
 		
 					<div style = {{ textAlign: 'center' }}  >
 						<Image centered style = {{ objectFit: 'cover', width: '100px', height: '100px' }} src = { person.image } circular size = 'tiny'/>
-						<label>{person.lastName} {person.firstName}</label>
+						<label> <Link to = {{ 
+							pathname: `/user/${person.profileId}`,
+							state: { auth: true } 
+							}}> 
+							{person.lastName} {person.firstName}</Link> </label>
 					</div>
 
 					<div className = 'flex-gap'>
