@@ -14,6 +14,7 @@ export const AUTHENTICATE_USER_TOKEN_QUERY =  gql`
 			lastName
 			image
 			email
+			profileId
 			verified
 			createdAt
 

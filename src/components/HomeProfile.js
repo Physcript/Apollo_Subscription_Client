@@ -1,4 +1,6 @@
 
+import Cookies from 'js-cookie'
+
 import { 
 	UPLODATE_IMAGE_MUTATION,
 	UPLOAD_IMAGE_DELETE_MUTATION,
@@ -108,6 +110,11 @@ const HomeProfile = ({user}) => {
 
 	}
 
+	const logoutHandler = (e) => {
+		e.preventDefault()
+		Cookies.remove('token')
+		history.push('/')
+	}
 
 
 	useEffect(()=> {
@@ -149,7 +156,7 @@ const HomeProfile = ({user}) => {
 						<a href = '/home'><label>Message</label></a>
 						<a href = '/home'><label>Friend</label></a>
 						<a href = '/home'><label>Notification</label></a>
-						<a href = '/home'><label>Logout</label></a>
+						<label onClick = { logoutHandler }>Logout</label>
 					</div>
 
 					<div className = 'home-recent-activity'>
