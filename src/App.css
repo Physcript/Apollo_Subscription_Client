@@ -49,6 +49,11 @@ body {
 
 }
 
+.display-flex {
+  display:flex;
+  flex-direction:column;
+}
+
 
 .display-center {
   width:100%;
