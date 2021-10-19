@@ -16,6 +16,11 @@ import { useMutation } from '@apollo/client'
 import { useState,useEffect } from 'react'
 import { Container,Grid,Image,Modal,Segment,Icon,Input,Button,Header,Message, Loader,Dimmer,Form } from 'semantic-ui-react'
 import { withRouter,useHistory,Link } from 'react-router-dom'
+
+
+// components
+import Notification from './Notification'
+
 import 'semantic-ui-css/semantic.min.css'
 
 const HomeProfile = ({user}) => {

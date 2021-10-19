@@ -10,6 +10,8 @@ import { FOLLOW_USER_MUTATION } from '../graphql/mutation/followMutation'
 //
 import { useQuery,useMutation } from '@apollo/client'
 
+// component
+import Notification from './Notification'
 
 import 'semantic-ui-css/semantic.min.css'
 import './view-profile.css'
@@ -64,11 +66,15 @@ const ViewProfile = ({user}) => {
 
 	return(
 		<div>
-			<div style = {{ padding: '20px 0' }}>
-				<Icon name = 'arrow left' />
-				Back
+			<div className = 'padding-1' style = {{ padding: '20px 0' }} style = {{ display: 'flex', justifyContent: 'space-between' }} >
+				<div>
+					<Icon name = 'arrow left' />
+					<label>Home</label>
+				</div>
+				<Notification />
+
 			</div>
-			<div className = 'flex-gap'>
+			<div className = 'display-center-v3' style = {{}}>
 
 				<div>
 
