@@ -10,6 +10,9 @@ import { FOLLOW_USER_MUTATION } from '../graphql/mutation/followMutation'
 //
 import { useQuery,useMutation } from '@apollo/client'
 
+// 
+import { useHistory } from 'react-router-dom'
+
 // component
 import Notification from './Notification'
 
@@ -17,6 +20,8 @@ import 'semantic-ui-css/semantic.min.css'
 import './view-profile.css'
 
 const ViewProfile = ({user}) => {
+
+	const history = useHistory()
 
 	const [ dataCount, setDataCount ] = useState({})
 	const [ followStatus,setFollowStatus ] = useState(false)
@@ -66,19 +71,20 @@ const ViewProfile = ({user}) => {
 
 	return(
 		<div>
-			<div className = 'padding-1' style = {{ padding: '20px 0' }} style = {{ display: 'flex', justifyContent: 'space-between' }} >
-				<div>
-					<Icon name = 'arrow left' />
-					<label>Home</label>
-				</div>
-				<Notification />
 
-			</div>
 			<div className = 'display-center-v3' style = {{}}>
 
+				<div className = 'padding-1' style = {{ padding: '20px 0' }} style = {{ display: 'flex', justifyContent: 'space-between' }} >
+					<div onClick = { () => history.push('/home') } >
+						<Icon name = 'arrow left' />
+						<label>Home</label>
+					</div>
+					<Notification />
+				</div>
+
 				<div>
 
-					<Image src = { user.image }/>
+					<Image src = { user.image } style = {{ maxWidth: '80%', minWidth: '70%' }} />
 
 					<div>
 						{ followStatus ? (

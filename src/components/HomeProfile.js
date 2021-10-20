@@ -1,6 +1,7 @@
 
 import Cookies from 'js-cookie'
 
+
 import { 
 	UPLODATE_IMAGE_MUTATION,
 	UPLOAD_IMAGE_DELETE_MUTATION,
@@ -24,6 +25,13 @@ import Notification from './Notification'
 import 'semantic-ui-css/semantic.min.css'
 
 const HomeProfile = ({user}) => {
+
+	const [ mobileNotif, setMobileNotif ] = useState({
+		isTrue : window.innerWidth >= 974 ? false : true
+	})
+	const [ computerNotif, setComputerNotif ] = useState({
+		isTrue : window.innerWidth >= 974 ? true : false
+	})
 
 	// modal
 	const [open, setOpen] = useState(false)
@@ -149,8 +157,27 @@ const HomeProfile = ({user}) => {
 	return (
 		<Grid >
 			<Grid.Row>
+
+					<Grid.Column only = 'tablet mobile' width = { 16 }>
+					<div style = {{ display: 'flex',justifyContent: 'space-between', marginTop: '20px' }}>
+						<div>
+							<Input size = 'mini'
+								placeholder = 'Search by Email'
+								style = {{ width: '200px' }}
+							/>
+						</div>
+						<div style = {{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+							<Image  style = {{ objectFit: 'cover', maxWidth: '35px', maxHeight: '35px' }} src = { person.image } circular size = 'tiny'/>
+							<Notification logout = {false} action = { mobileNotif.isTrue }clasName = 'computer mobile' />
+							<label>{person.lastName} {person.firstName}</label>
+							<Icon name = 'bars' size = 'big' />
+						</div>
+					</div>
+				</Grid.Column>
 				<Grid.Column only = 'computer' width = { 16 } style = {{ height: '100vh',display: 'flex',flexDirection: 'column', justifyContent:'center', gap: '20px' }}>
-		
+						<div style = {{ textAlign: 'right', paddingRight: '20px' }}>
+							<Notification action = { computerNotif.isTrue }/>
+						</div>
 					<div style = {{ textAlign: 'center' }}  >
 						<Image centered style = {{ objectFit: 'cover', width: '100px', height: '100px' }} src = { person.image } circular size = 'tiny'/>
 						<label> <Link to = {{ 
@@ -165,29 +192,12 @@ const HomeProfile = ({user}) => {
 						<a href = '/home'><label>Message</label></a>
 						<a href = '/home'><label>Friend</label></a>
 						<a href = '/home'><label>Notification</label></a>
-						<label onClick = { logoutHandler }>Logout</label>
 					</div>
 
 					<div className = 'home-recent-activity'>
 						<label>Recent Activity</label>
 					</div>
 				
-				</Grid.Column>
-				<Grid.Column only = 'tablet mobile' width = { 16 }>
-					<div style = {{ display: 'flex',justifyContent: 'space-between', marginTop: '20px' }}>
-						<div>
-							<Input size = 'mini'
-								placeholder = 'Search by Email'
-								style = {{ width: '200px' }}
-							/>
-						</div>
-						<div style = {{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-							<Image  style = {{ objectFit: 'cover', maxWidth: '35px', maxHeight: '35px' }} src = { person.image } circular size = 'tiny'/>
-							<label>{person.lastName} {person.firstName}</label>
-							<Icon name = 'bars' size = 'big' />
-						</div>
-
-					</div>
 				</Grid.Column>
 			</Grid.Row>
 

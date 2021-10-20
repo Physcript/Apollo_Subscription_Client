@@ -10,8 +10,10 @@ import { Icon,Image,Popup } from 'semantic-ui-react'
 
 
 const timeoutLength = 5000
-const Notification = () => {
 
+const Notification = ({logout = true , action = true }) => {
+
+	const contextRef = React.useRef()
 	const [person,setPerson] = useState({})
 
 	const { data,loading,error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
@@ -26,6 +28,7 @@ const Notification = () => {
 	})
 
 	const handleOpen = () => {
+		if(!action) return  
     setPopupNotif({ isOpen: true })
 
     setTimeout(() => {
@@ -53,18 +56,18 @@ const Notification = () => {
 	return (
 
 		<div>
-			
-			<Icon name = 'bell' style = {{ padding: '0px 20px' }} /> 
-			<label>Logout</label> 
 			<Popup
-
+							context={contextRef}
 	            content={ notifData?.followNotification.body}
 	            open={ popupNotif.isOpen } 
 	            onOpen={ handleOpen }
-	            position = 'top'
-	            style = {{ margin: '40px 210px' }}
+	            position='top center'
 
 			/>
+			<strong ref={contextRef}><Icon name = 'bell' style = {{ padding: '0px 20px' }} /></strong> 
+			{ logout ? (
+			<label>Logout</label> 
+			) : '' } 
 		</div>
 	)
 }

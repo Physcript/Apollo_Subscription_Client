@@ -41,10 +41,10 @@ const ViewPage = () => {
 			<Container>
 				<Grid >
 					<Grid.Row>
-						<Grid.Column computer = { 4 } table = { 8 } mobile = { 8 } className = 'column centered' >
+						<Grid.Column computer = { 4 } tablet = { 8 } mobile = { 8 } className = 'column centered' >
 							<ViewProfile user = { person } />
 						</Grid.Column>
-						<Grid.Column computer = { 11 } mobile = { 16 }	 floated = {'right'} >
+						<Grid.Column computer = { 11 } tablet = { 16 } mobile = { 16 }	 floated = {'right'} className = 'column centered' >
 							post section
 						</Grid.Column>
 					</Grid.Row>

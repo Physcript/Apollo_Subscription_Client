@@ -5,6 +5,7 @@ import { Container,Grid,Image } from 'semantic-ui-react'
 
 import HomeProfile from '../components/HomeProfile'
 import HomeProfileMobile from '../components/HomeProfileMobile'
+import Notification from '../components/Notification'
 
 import { withRouter } from 'react-router-dom'
 
