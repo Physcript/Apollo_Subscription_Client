@@ -4,9 +4,10 @@ import { useQuery }  from '@apollo/client'
 import {GET_USER_BY_PROFILE_ID_QUERY} from '../graphql/query/userQuery'
 
 import ViewProfile from '../components/ViewProfile'
+import PostComponent from '../components/PostComponent'
 
 import { withRouter,useParams } from 'react-router-dom'
-import { Grid,Container,Loader,Segment,Dimmer } from 'semantic-ui-react'
+import { Grid,Container,Loader,Segment,Dimmer,Input } from 'semantic-ui-react'
 
 import 'semantic-ui-css/semantic.min.css'
 
@@ -45,7 +46,7 @@ const ViewPage = () => {
 							<ViewProfile user = { person } />
 						</Grid.Column>
 						<Grid.Column computer = { 11 } tablet = { 16 } mobile = { 16 }	 floated = {'right'} className = 'column centered' >
-							post section
+							<PostComponent />
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>

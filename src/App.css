@@ -15,6 +15,10 @@ body {
   }
 }
 
+.catch-error {
+  color: #F5a5a5
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -52,6 +56,10 @@ body {
 .display-flex {
   display:flex;
   flex-direction:column;
+}
+
+.row {
+  flex-direction:row;
 }
 
 

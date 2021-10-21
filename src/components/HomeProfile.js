@@ -15,7 +15,7 @@ import {
 import { useMutation } from '@apollo/client'
 
 import { useState,useEffect } from 'react'
-import { Container,Grid,Image,Modal,Segment,Icon,Input,Button,Header,Message, Loader,Dimmer,Form } from 'semantic-ui-react'
+import { Dropdown,Container,Grid,Image,Modal,Segment,Icon,Input,Button,Header,Message, Loader,Dimmer,Form } from 'semantic-ui-react'
 import { withRouter,useHistory,Link } from 'react-router-dom'
 
 
@@ -170,7 +170,17 @@ const HomeProfile = ({user}) => {
 							<Image  style = {{ objectFit: 'cover', maxWidth: '35px', maxHeight: '35px' }} src = { person.image } circular size = 'tiny'/>
 							<Notification logout = {false} action = { mobileNotif.isTrue }clasName = 'computer mobile' />
 							<label>{person.lastName} {person.firstName}</label>
-							<Icon name = 'bars' size = 'big' />
+							<Dropdown
+								className = 'icon'
+								icon = "bars"
+
+							>
+								<Dropdown.Menu className = 'left menu'>
+									<Dropdown.Item text = 'Update Profile' onClick = { openModal } />
+									<Dropdown.Item text = 'Message' />
+									<Dropdown.Item text = 'Logout' onClick = { logoutHandler } />
+								</Dropdown.Menu>
+							</Dropdown>
 						</div>
 					</div>
 				</Grid.Column>
