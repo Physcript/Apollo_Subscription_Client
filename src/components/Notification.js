@@ -5,6 +5,7 @@ import { useSubscription,useQuery } from '@apollo/client'
 
 import { FOLLOW_NOTIFICATION_SUBSCRIPTION } from '../graphql/subscription/followSubscription'
 import { AUTHENTICATE_USER_TOKEN_QUERY } from '../graphql/query/userQuery'
+import { useHistory } from 'react-router-dom'
 
 import { Icon,Image,Popup } from 'semantic-ui-react'
 
@@ -13,6 +14,7 @@ const timeoutLength = 5000
 
 const Notification = ({logout = true , action = true }) => {
 
+	const history = useHistory()
 	const contextRef = React.useRef()
 	const [person,setPerson] = useState({})
 
@@ -46,6 +48,13 @@ const Notification = ({logout = true , action = true }) => {
 		}
 	})
 
+
+	const logoutHandler = (e) => {
+		e.preventDefault()
+		Cookies.remove('token')
+		history.push('/')
+	}
+
 	useEffect(()=> {
 
 		if(notifData) handleOpen()
@@ -66,7 +75,7 @@ const Notification = ({logout = true , action = true }) => {
 			/>
 			<strong ref={contextRef}><Icon name = 'bell' style = {{ padding: '0px 20px' }} /></strong> 
 			{ logout ? (
-			<label>Logout</label> 
+			<label onClick = { logoutHandler }>Logout</label> 
 			) : '' } 
 		</div>
 	)
