@@ -60,3 +60,15 @@ export const UPDATE_USER_PROFFILE_MUTATION = gql`
 		updateUser( firstName: $firstName lastName: $lastName image: $image )
 	}
 `
+
+export const SEARCH_USER_PROFILE_MUTATION = gql`
+	mutation findUser ( $email: String ) {
+		findUser ( email: $email ) {
+			firstName
+			lastName
+			image
+			profileId
+			email
+		}
+	}
+`

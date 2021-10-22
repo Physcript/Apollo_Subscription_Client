@@ -5,6 +5,7 @@ import {GET_USER_BY_PROFILE_ID_QUERY} from '../graphql/query/userQuery'
 
 import ViewProfile from '../components/ViewProfile'
 import PostComponent from '../components/PostComponent'
+import SearchComponent from '../components/SearchComponent'
 
 import { withRouter,useParams } from 'react-router-dom'
 import { Grid,Container,Loader,Segment,Dimmer,Input } from 'semantic-ui-react'
@@ -46,6 +47,7 @@ const ViewPage = () => {
 							<ViewProfile user = { person } />
 						</Grid.Column>
 						<Grid.Column computer = { 11 } tablet = { 16 } mobile = { 16 }	 floated = {'right'} className = 'column centered' >
+							<SearchComponent />
 							<PostComponent />
 						</Grid.Column>
 					</Grid.Row>

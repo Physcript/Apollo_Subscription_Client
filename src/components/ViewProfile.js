@@ -22,19 +22,24 @@ import './view-profile.css'
 const ViewProfile = ({user}) => {
 
 	const history = useHistory()
+	
+
+	if(user == null) {
+		history.push('/')	
+	}
 
 	const [ dataCount, setDataCount ] = useState({})
 	const [ followStatus,setFollowStatus ] = useState(false)
 
 	const { data:isFollowData,loading:isFollowLoading,error:isFollowError,refetch: isFollowRefetech } = useQuery(CHECK_FOLLOW_USER_QUERY,{
 		variables: {
-			profileId: user.profileId
+			profileId: user?.profileId
 		}
 	})
 
 	const { data: countData,loading:countLoading,error:countError, refetch: countRefetch } = useQuery(COUNT_FOLLOW_AUTH_QUERY,{
 		variables: {
-			profileId: user.profileId
+			profileId: user?.profileId
 		}
 		
 	})
@@ -84,7 +89,7 @@ const ViewProfile = ({user}) => {
 
 				<div>
 
-					<Image src = { user.image } style = {{ maxWidth: '80%', minWidth: '70%' }} />
+					<Image src = { user?.image } style = {{ maxWidth: '80%', minWidth: '70%' }} />
 
 					<div>
 						{ followStatus ? (
@@ -99,7 +104,7 @@ const ViewProfile = ({user}) => {
 					</div>
 
 					<div className = 'display-flex'>
-						<label>{ user.lastName } { user.firstName }</label>
+						<label>{ user?.lastName } { user?.firstName }</label>
 						<label>Follower: { dataCount.countFollower }</label>
 					</div>
 

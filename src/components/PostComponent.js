@@ -4,13 +4,18 @@ import { Input,Grid,Icon,Button,Label,Loader,TextArea,Form,Image } from 'semanti
 
 import { useMutation,useQuery } from '@apollo/client'
 
-import { UPLODATE_IMAGE_MUTATION } from '../graphql/mutation/userMutation'
+import { UPLODATE_IMAGE_MUTATION,UPLOAD_IMAGE_DELETE_MUTATION } from '../graphql/mutation/userMutation'
+import { CREATE_POST_MUTATION } from '../graphql/mutation/postMutation'
 
 const PostComponent = () => {
 
 	const contextRef = React.useRef()
 	const [urlSyntax,setUrlSyntax] = useState({})
+	const [postSyntax,setPostSyntax] = useState({})
 	const [image,setImage] = useState('')
+	const [post,setPost] = useState({
+		body: ''
+	})
 	// mutation
 
 	const [ url , { data:urlData,loading:urlLoading,error:urlError } ] = useMutation(UPLODATE_IMAGE_MUTATION,{
@@ -20,17 +25,42 @@ const PostComponent = () => {
 		},
 		onCompleted: (val) => {
 			setUrlSyntax('')
-			setImage(val.uploadImage.url)
+			setImage(val.uploadImage)
 		} 
 	})
+
+	const [ deleteImage ] = useMutation(UPLOAD_IMAGE_DELETE_MUTATION)
+	const [ postMutation ] = useMutation(CREATE_POST_MUTATION,{
+		onError(e) {
+			setPostSyntax(e.graphQLErrors[0].extensions.error)
+		},
+		onCompleted: (val) => {
+			setPostSyntax('')
+			setPost(e => ({body: ''}))
+		}
+	})  
 
 	const errorImage = (e) => {
 		setImage('')
 	}
 
+	const postHandler = (e) => {
+		e.preventDefault() 
+		postMutation({
+			variables: {
+				body: post.body,
+				image: image.url,
+			}
+		})
+	} 
+
 	const fileHanlder = (e) => {
 		const { type } = e.target.files[0]
 		const file = e.target.files[0]
+
+		if(image.public_id) {
+			deleteUpload(image.public_id)
+		}
 
 		if(type == 'image/png' || type == 'image/jpeg' ) {
 			url({
@@ -44,20 +74,32 @@ const PostComponent = () => {
 		
 	}
 
+	async function deleteUpload(public_id) {
+		deleteImage({
+			variables: {
+				publicId: image.public_id
+			}
+		})
+	}
+
+
 	return(
 		<Grid>
 			<Grid.Row>
 				<Grid.Column width = { 10 } className = 'centered grid'>
 					<div>
 						<Form>
+						<label className = 'catch-error'>{ postSyntax.title }</label>
 						<TextArea 
 							placeholder = 'Input some text...'
 							style = {{ resize: "none"}}
+							value = { post.body }
+							onChange = { e => setPost( (val) => ({ ...val, body: e.target.value }) ) }
 						/>
 						</Form>
 					</div>
 					<div>	
-						<Image src = { image }  centered  className = 'padding-1' style = {{  maxHeight: '400px'}}  />
+						<Image src = { image.url }  centered  className = 'padding-1' style = {{  maxHeight: '400px'}}  />
 					</div>
 					<div style = {{ display:'flex' ,justifyContent: 'space-between' }}>
 						<Button 
@@ -77,7 +119,7 @@ const PostComponent = () => {
 							
 						</Button>
 						<label className = 'catch-error'>{ urlSyntax.title }</label>
-						<Button primary basic >Post</Button>
+						<Button onClick = { postHandler } primary basic >Post</Button>
 					</div>
 				</Grid.Column>
 			</Grid.Row>
