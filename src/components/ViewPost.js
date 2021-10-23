@@ -20,33 +20,30 @@ const ViewPost = ({user}) => {
 	})
 
 
-	const pag = () => {
-
-		setIndex( index + 5  )
-		refetch()
-
-	}
 
 
-	const { data: personData, loading: personLoading, error: personError, refetch } = useQuery(GET_PERSON_POST_QUERY,{
+	const { data: personData, loading: personLoading, error: personError, refetch:personRefetch } = useQuery(GET_PERSON_POST_QUERY,{
 		variables: {
 			profileId: person.profileId,
 			index
-		},		
-		onCompleted: (val) => {
-			window.onscroll = () => {
+		},
+		onComplete: (val) => {
+
 			
-			if( document.documentElement.scrollHeight - document.documentElement.scrollTop === window.innerHeight ) {
-				pag()
-			}
-			}
 		}
 	})
 
 
+	const setMyIndex = (data) => {
+		setIndex(data)	
+	}
+		
+
 	useEffect( () => {
 		if(user) setPerson(user)
 		if(personData) setPost(personData.personPost)
+		
+
 	},[user,personData])
 
 	return (
@@ -57,7 +54,7 @@ const ViewPost = ({user}) => {
 				{ post.post?.map( (val) => {
 				
 					return (
-						<SinglePostComponent data = {val} persons = {person} />
+						<SinglePostComponent index = { index }countz = { post.count } rq = {  setIndex  } data = {val} persons = {person} key = { val._id } />
 					)
 
 				})
