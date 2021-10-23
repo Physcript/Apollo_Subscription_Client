@@ -6,6 +6,7 @@ import { useMutation,useQuery } from '@apollo/client'
 
 import { UPLODATE_IMAGE_MUTATION,UPLOAD_IMAGE_DELETE_MUTATION } from '../graphql/mutation/userMutation'
 import { CREATE_POST_MUTATION } from '../graphql/mutation/postMutation'
+import { GET_PERSON_POST_QUERY } from '../graphql/query/postQuery'
 
 const PostComponent = () => {
 
@@ -18,7 +19,8 @@ const PostComponent = () => {
 	})
 	// mutation
 
-	const [ url , { data:urlData,loading:urlLoading,error:urlError } ] = useMutation(UPLODATE_IMAGE_MUTATION,{
+	const [ url , { data:urlData,loading:urlLoading,error:urlError } ] = useMutation(UPLODATE_IMAGE_MUTATION,
+		{
 		onError(e){
 			setUrlSyntax(e.graphQLErrors[0].extensions.error)
 			errorImage(e)
@@ -31,12 +33,17 @@ const PostComponent = () => {
 
 	const [ deleteImage ] = useMutation(UPLOAD_IMAGE_DELETE_MUTATION)
 	const [ postMutation ] = useMutation(CREATE_POST_MUTATION,{
+		refetchQueries: [
+				GET_PERSON_POST_QUERY,
+				'personPost'
+		],
 		onError(e) {
 			setPostSyntax(e.graphQLErrors[0].extensions.error)
 		},
 		onCompleted: (val) => {
 			setPostSyntax('')
 			setPost(e => ({body: ''}))
+			setImage('')
 		}
 	})  
 
@@ -52,6 +59,7 @@ const PostComponent = () => {
 				image: image.url,
 			}
 		})
+
 	} 
 
 	const fileHanlder = (e) => {
