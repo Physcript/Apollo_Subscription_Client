@@ -14,7 +14,7 @@ import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 
 const uploadLink = createUploadLink({
-  uri: 'https://fast-plains-63623.herokuapp.com/',
+  uri: 'https://fast-plains-63623.herokuapp.com/graphql',
   credentials: 'include',
   fetchOptions: {
         mode: 'no-cors',
@@ -25,7 +25,7 @@ const uploadLink = createUploadLink({
 // subs
 
 const wsLink = new WebSocketLink({
-  uri: 'wss://fast-plains-63623.herokuapp.com/',
+  uri: 'wss://fast-plains-63623.herokuapp.com/graphql',
   options: {
     reconnect: true
   }
