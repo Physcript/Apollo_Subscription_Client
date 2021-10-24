@@ -13,9 +13,27 @@ export const GET_PERSON_POST_QUERY = gql`
 				image
 				profileId
 				createdAt
+				userImage
 			}
 
 		}
 	}
 
+`
+
+export const GET_POST_QUERY = gql`
+	query getPost( $index: Int ) {
+		getPost( index: $index ) {
+			count
+			post {
+				_id
+				body
+				name
+				image
+				profileId
+				createdAt
+				userImage
+			}
+		}  
+	}
 `

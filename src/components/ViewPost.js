@@ -49,12 +49,12 @@ const ViewPost = ({user}) => {
 	return (
 		<Grid>
 			<Grid.Row>
-				<Grid.Column computer = { 10 } tablet = { 16 }className = 'centered grid'>
+				<Grid.Column computer = { 12 } tablet = { 16 }className = 'centered grid'>
 					
 				{ post.post?.map( (val) => {
 				
 					return (
-						<SinglePostComponent index = { index }countz = { post.count } rq = {  setIndex  } data = {val} persons = {person} key = { val._id } />
+						<SinglePostComponent index = { index } countz = { post.count } rq = {  setIndex  } data = {val} persons = {person} key = { val._id } />
 					)
 
 				})

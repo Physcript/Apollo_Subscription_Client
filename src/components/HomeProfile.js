@@ -1,6 +1,6 @@
 
 import Cookies from 'js-cookie'
-
+import SearchComponent from '../components/SearchComponent'
 
 import { 
 	UPLODATE_IMAGE_MUTATION,
@@ -161,10 +161,7 @@ const HomeProfile = ({user}) => {
 					<Grid.Column only = 'tablet mobile' width = { 16 }>
 					<div style = {{ display: 'flex',justifyContent: 'space-between', marginTop: '20px' }}>
 						<div>
-							<Input size = 'mini'
-								placeholder = 'Search by Email'
-								style = {{ width: '200px' }}
-							/>
+							<SearchComponent />
 						</div>
 						<div style = {{ display: 'flex', gap: '10px', alignItems: 'center' }}>
 							<Image  style = {{ objectFit: 'cover', maxWidth: '35px', maxHeight: '35px' }} src = { person.image } circular size = 'tiny'/>

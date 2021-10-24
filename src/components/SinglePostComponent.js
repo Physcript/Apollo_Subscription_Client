@@ -10,7 +10,7 @@ import moment from 'moment'
 
 
 
-const SinglePostComponent = ({data, persons,rq , countz , index}) => {
+const SinglePostComponent = ({data,persons,rq , countz , index}) => {
 
 	const [person,setPerson] = useState({})
 	const [ val, setVal ] = useState({})
@@ -36,7 +36,6 @@ const SinglePostComponent = ({data, persons,rq , countz , index}) => {
 	const pag = () => {
 
 		rq(index + 3)
-		console.log(index)
 
 
 	}
@@ -47,16 +46,10 @@ const SinglePostComponent = ({data, persons,rq , countz , index}) => {
 		setPerson(persons)
 		setVal(data)
 
-		window.onscroll = () => {
-			
-			if( document.documentElement.scrollHeight - document.documentElement.scrollTop  - 1<= window.innerHeight ) {
-				console.log('pag1')
+		window.onscroll = (e) => {
+			if((document.documentElement.scrollHeight - document.documentElement.scrollTop - document.documentElement.clientHeight - 50)  <= 0) {
 				pag()
 			}
-
-			
-			console.log((document.documentElement.scrollHeight - document.documentElement.scrollTop))
-			console.log(window.innerHeight)
 
 		}
 		
