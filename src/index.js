@@ -15,7 +15,10 @@ import { getMainDefinition } from '@apollo/client/utilities'
 
 const uploadLink = createUploadLink({
   uri: 'https://fast-plains-63623.herokuapp.com/',
-  credentials: 'include'
+  credentials: 'include',
+  fetchOptions: {
+        mode: 'no-cors',
+  },
 })
 
 
@@ -52,9 +55,6 @@ const splitLink = split(
 const client = new ApolloClient({
   link: splitLink,
   cache: new InMemoryCache(),
-  fetchOptions: {
-        mode: 'no-cors',
-      },
 })
 
 
