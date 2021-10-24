@@ -49,7 +49,7 @@ const SinglePostComponent = ({data, persons,rq , countz , index}) => {
 
 		window.onscroll = () => {
 			
-			if( document.documentElement.scrollHeight - document.documentElement.scrollTop <= window.innerHeight ) {
+			if( document.documentElement.scrollHeight - document.documentElement.scrollTop  - 1<= window.innerHeight ) {
 				console.log('pag1')
 				pag()
 			}
@@ -75,7 +75,7 @@ const SinglePostComponent = ({data, persons,rq , countz , index}) => {
 							</div>
 
 							<div className = 'display-flex' style = {{ padding: '20px' }}>
-
+								<label style = {{ overflowWrap: 'break-word' }} >
 								{ data.body.length > 200 ? (
 									
 									data.body.slice(0, see).concat( ` . . .` )
@@ -86,6 +86,7 @@ const SinglePostComponent = ({data, persons,rq , countz , index}) => {
 									onClick =  { seeHandler }
 									style = {{ color: 'blue' , padding: '10px 0px' }} >See more</label> ) : '' 
 								}
+								</label>
 
 							</div>
 							<div>
