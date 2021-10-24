@@ -22,7 +22,7 @@ const uploadLink = createUploadLink({
 // subs
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://fast-plains-63623.herokuapp.com/',
+  uri: 'wss://fast-plains-63623.herokuapp.com/',
   options: {
     reconnect: true
   }
