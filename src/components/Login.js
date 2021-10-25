@@ -21,7 +21,7 @@ const Login = () => {
 		},
 		onCompleted: e => {
 			setLoginSyntax({})
-			Cookies.set('token',e.loginUser , {  expires: 7 })
+			Cookies.set('token',e.loginUser , {  expires: 7 ,secure: true })
 			history.push({
 				pathname: '/home',
 				state: { auth: true }
