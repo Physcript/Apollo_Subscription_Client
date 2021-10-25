@@ -15,7 +15,7 @@ import { getMainDefinition } from '@apollo/client/utilities'
 
 const uploadLink = createUploadLink({
   uri: 'https://fast-plains-63623.herokuapp.com/',
-  credentials: 'include',
+  credentials: 'same-origin',
   
 })
 
