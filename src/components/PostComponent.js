@@ -102,7 +102,7 @@ const PostComponent = () => {
 				<Grid.Column width = { 10 } className = 'centered grid'>
 					<div>
 						<Form>
-						<label className = 'catch-error'>{ postSyntax.title }</label>
+						<label className = 'catch-error'>{ postSyntax?.title }</label>
 						<TextArea 
 							placeholder = 'Input some text...'
 							style = {{ resize: "none"}}
