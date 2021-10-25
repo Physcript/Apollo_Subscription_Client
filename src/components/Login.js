@@ -21,7 +21,7 @@ const Login = () => {
 		},
 		onCompleted: e => {
 			setLoginSyntax({})
-			Cookies.set('token',e.loginUser, { domain: 'https://fast-plains-63623.herokuapp.com/' } )
+			Cookies.set('token',e.loginUser )
 			history.push({
 				pathname: '/home',
 				state: { auth: true }
