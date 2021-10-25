@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Cookies from 'js-cookie'
 // apollo
-import { ApolloProvider,ApolloClient,InMemoryCache,split,createHttpLink } from '@apollo/client'
+import { ApolloProvider,ApolloClient,InMemoryCache,split,createHttpLink, HttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { createUploadLink } from 'apollo-upload-client'
 
@@ -13,7 +13,7 @@ import { createUploadLink } from 'apollo-upload-client'
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 
-const uploadLink = createUploadLink({
+const uploadLink = HttpLink({
   uri: 'https://fast-plains-63623.herokuapp.com/graphql',
 })
 
