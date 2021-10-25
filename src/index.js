@@ -21,7 +21,7 @@ const authLink = setContext( (_,{headers} ) => {
   const auths = Cookies.get('token')
   return {
     ...headers,
-    auth: auths ? auths : ''
+    autho: auths ? auths : ''
   }
 })
 
@@ -50,9 +50,8 @@ const splitLink = split(
       definition.operation === 'subscription'
     )
   },
-
+  wsLink,
   authLink.concat(uploadLink),
-  wsLink
 
 ) 
 
