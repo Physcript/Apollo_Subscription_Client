@@ -51,8 +51,8 @@ const splitLink = split(
     )
   },
 
-  wsLink,
   authLink.concat(uploadLink),
+  wsLink
 
 ) 
 
