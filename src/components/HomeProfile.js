@@ -26,7 +26,6 @@ import 'semantic-ui-css/semantic.min.css'
 
 const HomeProfile = ({user}) => {
 
-	console.log(Cookies.get('token'))
 
 	const [ mobileNotif, setMobileNotif ] = useState({
 		isTrue : window.innerWidth >= 974 ? false : true
@@ -176,7 +175,6 @@ const HomeProfile = ({user}) => {
 							>
 								<Dropdown.Menu className = 'left menu'>
 									<Dropdown.Item text = 'Update Profile' onClick = { openModal } />
-									<Dropdown.Item text = 'Message' />
 									<Dropdown.Item text = 'Logout' onClick = { logoutHandler } />
 								</Dropdown.Menu>
 							</Dropdown>
@@ -198,7 +196,6 @@ const HomeProfile = ({user}) => {
 
 					<div className = 'flex-gap'>
 						<label onClick = { openModal }>Update Profile</label>
-						<a href = '/home'><label>Message</label></a>
 						<a href = '/home'><label>Friend</label></a>
 						<a href = '/home'><label>Notification</label></a>
 					</div>

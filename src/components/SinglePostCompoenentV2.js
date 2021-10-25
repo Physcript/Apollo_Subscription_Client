@@ -2,6 +2,7 @@
 
 import { useState,useEffect } from 'react'
 import { Grid,Button,Loader,Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 
@@ -27,8 +28,10 @@ const SinglePostCompoenentV2 = ( {postData,index} ) => {
 			<div style = {{ background: '#ffffff', padding: '20px' , margin: '20px'  }} >
 				<div style = {{ display: 'flex' , justifyContent: 'space-between', alignItems: 'center'  }} >
 					<div  style = {{ display: 'flex' ,  alignItems: 'center', padding: '10px 10px' }}>
-						<Image src = { post.userImage } circular size = 'mini' style = {{ margin: '0 10px', width: '25px' , height: '25px'}}  />
-						<label>{post.name}</label> <label> </label>
+						<Link to = { `/user/${post.profileId}` } >
+							<Image src = { post.userImage } circular size = 'mini' style = {{ margin: '0 10px', width: '25px' , height: '25px'}}  />
+							<label>{post.name}</label> <label> </label>
+						</Link>
 					</div>
 					<label>{ moment(post.createdAt).fromNow() }</label>
 				</div>
