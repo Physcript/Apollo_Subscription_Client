@@ -13,7 +13,7 @@ import { createUploadLink } from 'apollo-upload-client'
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 
-const uploadLink = createUploadLink({
+const uploadLink = createHttpLink({
   uri: 'https://fast-plains-63623.herokuapp.com/graphql',
   credentials: 'include',
 })
