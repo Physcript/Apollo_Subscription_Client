@@ -21,7 +21,7 @@ const authLink = setContext( (_,{headers} ) => {
   const auths = Cookies.get('token')
   return {
     ...headers,
-    auth: auths
+    auth: auths ? auths : ''
   }
 })
 
@@ -59,7 +59,6 @@ const splitLink = split(
 const client = new ApolloClient({
   link: splitLink,
   cache: new InMemoryCache(),
-  credentials: 'include',
 })
 
 
