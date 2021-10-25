@@ -17,11 +17,13 @@ const uploadLink = new createUploadLink({
   uri: 'https://fast-plains-63623.herokuapp.com/graphql',
 })
 
-const authLink = setContext( (_,{headers} ) => {
-  const auths = Cookies.get('token')
-  return {
-    ...headers,
-    autho: auths ? auths : ''
+const authLink = setContext( ( _ , { headers } ) => {
+  const token = localStorage.getItem('token')
+  return{
+    headers:{
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
   }
 })
 
