@@ -13,8 +13,16 @@ import { createUploadLink } from 'apollo-upload-client'
 import { WebSocketLink } from '@apollo/client/link/ws'
 import { getMainDefinition } from '@apollo/client/utilities'
 
-const uploadLink = new createHttpLink({
+const uploadLink = new createUploadLink({
   uri: 'https://fast-plains-63623.herokuapp.com/graphql',
+})
+
+const authLink = setContext( (_,{headers} ) => {
+  const auths = Cookies.get('token')
+  return {
+    ...headers,
+    auth: auths
+  }
 })
 
 
@@ -44,7 +52,7 @@ const splitLink = split(
   },
 
   wsLink,
-  uploadLink
+  authLink.concat(uploadLink),
 
 ) 
 
