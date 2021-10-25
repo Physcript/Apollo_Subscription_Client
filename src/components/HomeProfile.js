@@ -26,6 +26,8 @@ import 'semantic-ui-css/semantic.min.css'
 
 const HomeProfile = ({user}) => {
 
+	console.log('asd')
+
 	const [ mobileNotif, setMobileNotif ] = useState({
 		isTrue : window.innerWidth >= 974 ? false : true
 	})
