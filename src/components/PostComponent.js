@@ -157,7 +157,7 @@ const PostComponent = ( {prof} ) => {
 						</div>
 					</div>
 
-				) : (console.log('') }
+				) : (console.log('')) }
 
 				</Grid.Column>
 			</Grid.Row>
