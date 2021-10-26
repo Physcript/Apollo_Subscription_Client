@@ -119,7 +119,7 @@ const PostComponent = ( {prof} ) => {
 			<Grid.Row>
 				<Grid.Column width = { 10 } className = 'centered grid'>
 
-				
+				{ visible ? (
 
 					<div>
 						<Form>
@@ -155,6 +155,9 @@ const PostComponent = ( {prof} ) => {
 						<label className = 'catch-error'>{ urlSyntax.title }</label>
 						<Button onClick = { postHandler } primary basic >Post</Button>
 					</div>
+
+
+				) : (console.log('') }
 
 				</Grid.Column>
 			</Grid.Row>
