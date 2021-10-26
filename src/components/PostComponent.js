@@ -116,8 +116,8 @@ const PostComponent = ( {prof} ) => {
 			<Grid.Row>
 				<Grid.Column width = { 10 } className = 'centered grid'>
 
-					{ prof === user?.profileId ? (
-
+					{ prof === user?.profileId ? console.log('true') : console.log('flase') }
+					
 					<div>
 						<Form>
 						<label className = 'catch-error'>{ postSyntax?.title }</label>
@@ -152,8 +152,6 @@ const PostComponent = ( {prof} ) => {
 						<label className = 'catch-error'>{ urlSyntax.title }</label>
 						<Button onClick = { postHandler } primary basic >Post</Button>
 					</div>
-
-					) : ''}
 
 				</Grid.Column>
 			</Grid.Row>
