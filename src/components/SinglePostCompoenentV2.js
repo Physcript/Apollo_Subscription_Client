@@ -2,12 +2,12 @@
 
 import { useState,useEffect } from 'react'
 import { Grid,Button,Loader,Image } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import moment from 'moment'
 
 
 const SinglePostCompoenentV2 = ( {postData,index} ) => {
-
+	const history = useHistory()
 	const [post,setPost] = useState(postData)
 	const [see,setSee] = useState(200)
 
@@ -23,17 +23,19 @@ const SinglePostCompoenentV2 = ( {postData,index} ) => {
 
 	} 
 
+	const viewHandler = (e) => {
+		e.preventDefault()
+		history.push(`/user/${post.profileId}`)
+	}
+
 	return(
 		<div>
 			<div style = {{ background: '#ffffff', padding: '20px' , margin: '20px'  }} >
 				<div style = {{ display: 'flex' , justifyContent: 'space-between', alignItems: 'center'  }} >
-					<Link to = { `/user/${post.profileId}` } >
-						<div style = {{ display: 'flex' ,  alignItems: 'center', padding: '10px 10px' }}>
-							<Image src = { post.userImage } circular size = 'mini' style = {{ margin: '0 10px', width: '25px' , height: '25px'}}  />
-							<label>{post.name}</label> <label> </label>
-							</Link>
-						</div>
-					</Link>
+					<div onClick = { viewHandler } style = {{ display: 'flex' ,  alignItems: 'center', padding: '10px 10px' }}>
+						<Image src = { post.userImage } circular size = 'mini' style = {{ margin: '0 10px', width: '25px' , height: '25px'}}  />
+						<label>{post.name}</label> <label> </label>
+					</div>
 					<label>{ moment(post.createdAt).fromNow() }</label>
 				</div>
 
