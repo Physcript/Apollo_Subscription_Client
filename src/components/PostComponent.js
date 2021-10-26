@@ -7,9 +7,11 @@ import { useMutation,useQuery } from '@apollo/client'
 import { UPLODATE_IMAGE_MUTATION,UPLOAD_IMAGE_DELETE_MUTATION } from '../graphql/mutation/userMutation'
 import { CREATE_POST_MUTATION } from '../graphql/mutation/postMutation'
 import { GET_PERSON_POST_QUERY } from '../graphql/query/postQuery'
+import { AUTHENTICATE_USER_TOKEN_QUERY } from '../graphql/query/userQuery'
+
 import { GET_POST_QUERY } from '../graphql/query/postQuery'
 
-const PostComponent = () => {
+const PostComponent = ( {prof} ) => {
 
 	const contextRef = React.useRef()
 	const [urlSyntax,setUrlSyntax] = useState({})
@@ -18,8 +20,19 @@ const PostComponent = () => {
 	const [post,setPost] = useState({
 		body: ''
 	})
-	// mutation
 
+	const [user,setUser] = useState({})
+
+	//query 
+
+	const { data: userData ,loading.error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
+		onCompleted: (val) => {
+			setUser(userData.authLogin)
+		}
+	})
+
+
+	// mutation
 	const [ url , { data:urlData,loading:urlLoading,error:urlError } ] = useMutation(UPLODATE_IMAGE_MUTATION,
 		{
 		onError(e){
@@ -31,6 +44,8 @@ const PostComponent = () => {
 			setImage(val.uploadImage)
 		} 
 	})
+
+
 
 	const [ deleteImage ] = useMutation(UPLOAD_IMAGE_DELETE_MUTATION)
 
@@ -100,6 +115,9 @@ const PostComponent = () => {
 		<Grid>
 			<Grid.Row>
 				<Grid.Column width = { 10 } className = 'centered grid'>
+
+					{ prof === user?.profileId ? (
+
 					<div>
 						<Form>
 						<label className = 'catch-error'>{ postSyntax?.title }</label>
@@ -134,6 +152,9 @@ const PostComponent = () => {
 						<label className = 'catch-error'>{ urlSyntax.title }</label>
 						<Button onClick = { postHandler } primary basic >Post</Button>
 					</div>
+
+					) : ''}
+
 				</Grid.Column>
 			</Grid.Row>
 		</Grid>

@@ -49,7 +49,7 @@ const ViewPage = () => {
 						</Grid.Column>
 						<Grid.Column computer = { 11 } tablet = { 16 } mobile = { 16 }	 floated = {'right'} className = 'column centered' >
 							<SearchComponent />
-							<PostComponent />
+							<PostComponent prof = { profileId } />
 							<ViewPost user = { person } />
 						</Grid.Column>
 					</Grid.Row>
