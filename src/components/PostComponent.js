@@ -120,42 +120,42 @@ const PostComponent = ( {prof} ) => {
 				<Grid.Column width = { 10 } className = 'centered grid'>
 
 				{ visible ? (
-
 					<div>
-						<Form>
-						<label className = 'catch-error'>{ postSyntax?.title }</label>
-						<TextArea 
-							placeholder = 'Input some text...'
-							style = {{ resize: "none"}}
-							value = { post.body }
-							onChange = { e => setPost( (val) => ({ ...val, body: e.target.value }) ) }
-						/>
-						</Form>
-					</div>
-					<div>	
-						<Image src = { image.url }  centered  className = 'padding-1' style = {{  maxHeight: '400px'}}  />
-					</div>
-					<div style = {{ display:'flex' ,justifyContent: 'space-between' }}>
-						<Button 
-							as = 'label'
-							basic 
-						>	
-							<Icon name = 'image' />
-							Image
-							<label> </label>
-							{ urlLoading ?  <Loader active size = 'mini' inline = 'right'/> : '' }
-							<label> </label>
-							{ urlData ? <Icon name = 'check' className = 'green' /> : '' }
-							<input type = 'file' hidden 
-								accept = "image/*"
-								onChange = { fileHanlder }
+						<div>
+							<Form>
+							<label className = 'catch-error'>{ postSyntax?.title }</label>
+							<TextArea 
+								placeholder = 'Input some text...'
+								style = {{ resize: "none"}}
+								value = { post.body }
+								onChange = { e => setPost( (val) => ({ ...val, body: e.target.value }) ) }
 							/>
-							
-						</Button>
-						<label className = 'catch-error'>{ urlSyntax.title }</label>
-						<Button onClick = { postHandler } primary basic >Post</Button>
+							</Form>
+						</div>
+						<div>	
+							<Image src = { image.url }  centered  className = 'padding-1' style = {{  maxHeight: '400px'}}  />
+						</div>
+						<div style = {{ display:'flex' ,justifyContent: 'space-between' }}>
+							<Button 
+								as = 'label'
+								basic 
+							>	
+								<Icon name = 'image' />
+								Image
+								<label> </label>
+								{ urlLoading ?  <Loader active size = 'mini' inline = 'right'/> : '' }
+								<label> </label>
+								{ urlData ? <Icon name = 'check' className = 'green' /> : '' }
+								<input type = 'file' hidden 
+									accept = "image/*"
+									onChange = { fileHanlder }
+								/>
+								
+							</Button>
+							<label className = 'catch-error'>{ urlSyntax.title }</label>
+							<Button onClick = { postHandler } primary basic >Post</Button>
+						</div>
 					</div>
-
 
 				) : (console.log('') }
 
