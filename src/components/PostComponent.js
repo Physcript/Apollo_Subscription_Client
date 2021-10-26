@@ -22,12 +22,15 @@ const PostComponent = ( {prof} ) => {
 	})
 
 	const [user,setUser] = useState({})
+	const [visible,setVisible] = useState(true)
 
 	//query 
 
 	const { data: userData ,loading.error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
 		onCompleted: (val) => {
 			setUser(userData.authLogin)
+			setVisible( prof === user.profileId )
+			console.log(visible)
 		}
 	})
 
@@ -116,8 +119,8 @@ const PostComponent = ( {prof} ) => {
 			<Grid.Row>
 				<Grid.Column width = { 10 } className = 'centered grid'>
 
-					{ prof === user?.profileId ? console.log('true') : console.log('flase') }
-					
+				
+
 					<div>
 						<Form>
 						<label className = 'catch-error'>{ postSyntax?.title }</label>
