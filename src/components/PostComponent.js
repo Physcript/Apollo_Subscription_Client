@@ -26,7 +26,7 @@ const PostComponent = ( {prof} ) => {
 
 	//query 
 
-	const { data: userData ,loading.error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
+	const { data: userData ,loading, error } = useQuery(AUTHENTICATE_USER_TOKEN_QUERY,{
 		onCompleted: (val) => {
 			setUser(userData.authLogin)
 			setVisible( prof === user.profileId )
