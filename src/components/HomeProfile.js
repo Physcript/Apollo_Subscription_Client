@@ -165,7 +165,9 @@ const HomeProfile = ({user}) => {
 							<SearchComponent />
 						</div>
 						<div style = {{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-							<Image  style = {{ objectFit: 'cover', maxWidth: '35px', maxHeight: '35px' }} src = { person.image } circular size = 'tiny'/>
+							<Link to = { `/user/${person.profileId}` } >
+ 								<Image  style = {{ objectFit: 'cover', maxWidth: '35px', maxHeight: '35px' }} src = { person.image } circular size = 'tiny'/>
+							</Link>
 							<Notification logout = {false} action = { mobileNotif.isTrue }clasName = 'computer mobile' />
 							<label>{person.lastName} {person.firstName}</label>
 							<Dropdown
