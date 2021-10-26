@@ -27,12 +27,13 @@ const SinglePostCompoenentV2 = ( {postData,index} ) => {
 		<div>
 			<div style = {{ background: '#ffffff', padding: '20px' , margin: '20px'  }} >
 				<div style = {{ display: 'flex' , justifyContent: 'space-between', alignItems: 'center'  }} >
-					<div  style = {{ display: 'flex' ,  alignItems: 'center', padding: '10px 10px' }}>
-						<Link to = { `/user/${post.profileId}` } >
+					<Link to = { `/user/${post.profileId}` } >
+						<div style = {{ display: 'flex' ,  alignItems: 'center', padding: '10px 10px' }}>
 							<Image src = { post.userImage } circular size = 'mini' style = {{ margin: '0 10px', width: '25px' , height: '25px'}}  />
 							<label>{post.name}</label> <label> </label>
-						</Link>
-					</div>
+							</Link>
+						</div>
+					</Link>
 					<label>{ moment(post.createdAt).fromNow() }</label>
 				</div>
 
